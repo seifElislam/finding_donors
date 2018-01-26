@@ -12890,7 +12890,7 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <li><p>How <em>Random Forest</em> learns from data? this is done on two steps:</p>
 <ul>
 <li>1- Random forest creation: we use the traning data to feed the Random forest but in a random way! We create a subset of data from training data with "m" features chosen randomly with replacement (meaning we can select the same value multiple times). Randomly we select "K" features from the total "m" features where k &lt;&lt; m. We create a sub-learner-class using these data. By repeating these steps, we get a bunch of learner classes which is the <em>Random Forest</em>. The benefit of using randomness is reducing the variance of each learner-class.</li>
-<li>2- making the prediction: each learner-class applies its rules discovered from traning subset on testing data and predicts a value . we calculate the votes for each predicted values. Finally, we consider the high voted predicted target as the final prediction.</li>
+<li>2- making the prediction: each learner-class applies its rules discovered from traning subset on testing data and predicts a value . we calculate the votes for each predicted values. Finally, we consider the high voted predicted target as the final prediction. <a href="https://medium.com/@Synced/how-random-forest-algorithm-works-in-machine-learning-3c0fe15b6674">source</a> <a href="https://towardsdatascience.com/decision-tree-ensembles-bagging-and-boosting-266a8ba60fd9">source</a></li>
 </ul>
 </li>
 </ul>
