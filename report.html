@@ -11944,7 +11944,7 @@ div#notebook {
 <span class="n">n_at_most_50k</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">])</span><span class="o">==</span><span class="s1">&#39;&lt;=50K&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># TODO: Percentage of individuals whose income is more than $50,000</span>
-<span class="n">greater_percent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span><span class="p">)</span><span class="o">/</span><span class="n">n_records</span>
+<span class="n">greater_percent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span><span class="p">)</span><span class="o">/</span><span class="n">n_records</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
 
 <span class="c1"># Print the results</span>
 <span class="k">print</span> <span class="s2">&quot;Total number of records: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
@@ -11970,7 +11970,7 @@ div#notebook {
 <pre>Total number of records: 45222
 Individuals making more than $50,000: 11208
 Individuals making at most $50,000: 34014
-Percentage of individuals making more than $50,000: 0.25%
+Percentage of individuals making more than $50,000: 24.78%
 </pre>
 </div>
 </div>
@@ -12884,7 +12884,16 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p><em>Random Forest</em> model can be easily explained to anyone without much hassle. As its name, there are two keywords <em>random</em> and <em>forest</em>. Forest means many trees! It constructs many decision trees which are tree-like graphs to show the possible consequences. Random means each tree gets a random sample of the training data and produce its rules. Traning this model simply by picking some random traning data and construct a decision tree. By repeating these steps, we can get many decision trees. For prediction, we give test features for all decision trees we get. Then we calculate votes for each predicted target of single tree. Finally, Consider the high voted predicted target as the final prediction from the random forest algorithm. <a href="https://medium.com/@Synced/how-random-forest-algorithm-works-in-machine-learning-3c0fe15b6674">source</a></p>
+<ul>
+<li><p>Overview: <em>Random Forest</em> is simply a combination of sub-learner-classes that discover the traning data randomly. Then each sub-class predicts the testing data. Finally, they are combined to form some sort of 'committee' to make better decisions.</p>
+</li>
+<li><p>How <em>Random Forest</em> learns from data? this is done on two steps:</p>
+<ul>
+<li>1- Random forest creation: we use the traning data to feed the Random forest but in a random way! We create a subset of data from training data with "m" features chosen randomly with replacement (meaning we can select the same value multiple times). Randomly we select "K" features from the total "m" features where k &lt;&lt; m. We create a sub-learner-class using these data. By repeating these steps, we get a bunch of learner classes which is the <em>Random Forest</em>. The benefit of using randomness is reducing the variance of each learner-class.</li>
+<li>2- making the prediction: each learner-class applies its rules discovered from traning subset on testing data and predicts a value . we calculate the votes for each predicted values. Finally, we consider the high voted predicted target as the final prediction.</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
